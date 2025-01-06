@@ -29,6 +29,8 @@ import { NPCName, NPC_WEARABLES } from "lib/npcs";
 import { ChampionsPrizes } from "features/world/ui/factions/Champions";
 import { toOrdinalSuffix } from "features/retreat/components/auctioneer/AuctionLeaderboardTable";
 import { KingdomChores } from "features/world/ui/factions/chores/KingdomChoresCodex";
+import { KitchenRequests } from "features/world/ui/factions/FactionKitchenCodex";
+import { PetRequests } from "features/world/ui/factions/FactionPetCodex";
 
 const npcs: Record<FactionName, NPCName> = {
   nightshades: "nyx",
@@ -167,6 +169,8 @@ export const FactionLeaderboard: React.FC<Props> = ({
         </div>
         <ChampionsPrizes />
         <KingdomChores />
+        <PetRequests />
+        <KitchenRequests />
       </div>
     </InnerPanel>
   );

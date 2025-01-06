@@ -1255,6 +1255,8 @@
   "faction.kitchen.opensIn": "Opens in {{time}}",
   "faction.kitchen.notReady": "Ahhh I love your enthusiasm! However, the kitchen is not open yet. Please come back later.",
   "faction.kitchen.gatherResources": "So many new recruits... how will we feed them all! Can you help me gather some resources?",
+  "faction.kitchen": "Faction Kitchen",
+  "faction.kitchen.intro": "Donate resources to the faction kitchen to earn marks from your faction house.",
   "faction.pet.gatherResources": "Grrrrghhhhhh...",
   "faction.pet.contributingMember": "Contributing member",
   "faction.kitchen.preparing": "I'm still preparing my orders! Please come back in a few minutes.",
