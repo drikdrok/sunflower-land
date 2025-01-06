@@ -90,6 +90,7 @@ export const PetRequests: React.FC = () => {
     gameService.send("kingdomChores.refreshed");
     gameService.send("SAVE");
   };
+
   return (
     <div className="mt-3">
       <InnerPanel className="mb-1 w-full">
@@ -105,6 +106,7 @@ export const PetRequests: React.FC = () => {
       </InnerPanel>
       <div className="flex flex-col pb-1 space-y-1">
         {petRequests &&
+          !collectivePet.sleeping &&
           petRequests.map((request, i) => (
             <PetRequestRow
               key={`request-${i}`}
@@ -115,6 +117,13 @@ export const PetRequests: React.FC = () => {
               collectivePet={collectivePet}
             />
           ))}
+
+        {collectivePet.sleeping && (
+          <PetSleepingRow
+            collectivePet={collectivePet}
+            gameService={gameService}
+          />
+        )}
       </div>
     </div>
   );
@@ -151,7 +160,32 @@ interface PetRequestRowProps {
   collectivePet: CollectivePet;
 }
 
+interface PetSleepingRowProps {
+  collectivePet: CollectivePet;
+  gameService: MachineInterpreter;
+}
+
 const _game = (state: MachineState) => state.context.state;
+
+const PetSleepingRow: React.FC<PetSleepingRowProps> = ({
+  collectivePet,
+  gameService,
+}) => {
+  const { faction } = gameService.state.context.state;
+  const { t } = useAppTranslation();
+  return (
+    <InnerPanel className="flex flex-col w-full">
+      <div className="flex space-x-1 p-1 pb-0 pl-0 text-xs">
+        {faction && (
+          <img src={PET_IMAGE[faction.name]["sleeping"]} className="h-10" />
+        )}
+        <div className="my-1 space-y-1">
+          <p>{t("faction.pet.sleeping")}</p>
+        </div>
+      </div>
+    </InnerPanel>
+  );
+};
 
 const PetRequestRow: React.FC<PetRequestRowProps> = ({
   request,
